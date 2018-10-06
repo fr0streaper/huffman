@@ -34,9 +34,12 @@ namespace
             expected_input.read(expected_buffer, BUFFER_SIZE);
             actual_input.read(actual_buffer, BUFFER_SIZE);
 
-            if (expected_buffer != actual_buffer)
+            for (size_t i = 0; i < expected_input.gcount(); ++i)
             {
-                return false;
+                if (expected_buffer[i] != actual_buffer[i])
+                {
+                    return false;
+                }
             }
         }
 
@@ -60,12 +63,12 @@ TEST(correctness, empty)
 
 //TODO: fix large tests
 
-/*
+
 TEST(correctness, pictures)
 {
     for (char i = '1'; i <= '5'; ++i)
     {
-        std::string name = "test";
+        std::string name = "../test_pictures/test";
         name += i;
 
         huffman_encode_file(name + ".jpg", "test-e.huff");
@@ -73,11 +76,4 @@ TEST(correctness, pictures)
 
         EXPECT_TRUE(compare_files(name + ".jpg", name + "-ed.jpg"));
     }
-
-
-    huffman_encode_file("test1.jpg", "test-e.huff");
-    huffman_decode_file("test-e.huff", "test1-ed.jpg");
-
-    EXPECT_TRUE(compare_files("test.jpg", "test1-ed.jpg"));
 }
-*/
