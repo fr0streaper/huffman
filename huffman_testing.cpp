@@ -61,8 +61,12 @@ TEST(correctness, empty)
     EXPECT_EQ(input, output);
 }
 
-//TODO: fix large tests
-
+TEST(correctness, single_digit)
+{
+    std::string input = "F";
+    std::string output = encode_and_decode(input);
+    EXPECT_EQ(input, output);
+}
 
 TEST(correctness, pictures)
 {

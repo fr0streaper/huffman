@@ -27,7 +27,7 @@ tree::tree(counter const& data)
 
     if (vertices.size() == 1)
     {
-        vertices.insert({ vertices.begin()->first, new tree_node() });
+        vertices.insert({ UINT64_MAX, new tree_node() });
     }
 
     if (vertices.empty())
